@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/spellCard"
+        android:src="@drawable/spell_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ImageView
+        android:id="@+id/spellNameRect"
+        android:src="@drawable/spell_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintStart_toStartOf="@id/spellCard"
+        app:layout_constraintEnd_toEndOf="@id/spellCard"
+        app:layout_constraintTop_toTopOf="@id/spellCard"
+        app:layout_constraintBottom_toTopOf="@id/spellLvl"
+
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/spellLvl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Spell Lvl"
+        android:textColor="#FFF"
+        android:textSize="10sp"
+
+        app:layout_constraintStart_toStartOf="@id/spellNameRect"
+        app:layout_constraintEnd_toEndOf="@id/spellNameRect"
+        app:layout_constraintTop_toBottomOf="@id/spellNameRect"
+        app:layout_constraintBottom_toTopOf="@id/castingTimeRect"/>
+
+    <ImageView
+        android:id="@+id/castingTimeRect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/casting_time_rect"
+
+        app:layout_constraintStart_toStartOf="@id/spellNameRect"
+        app:layout_constraintEnd_toStartOf="@id/rangeRect"
+        app:layout_constraintTop_toBottomOf="@id/spellLvl"
+        app:layout_constraintBottom_toBottomOf="@id/rangeRect" />
+
+    <ImageView
+        android:id="@+id/rangeRect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/range_rect"
+
+        app:layout_constraintStart_toEndOf="@id/castingTimeRect"
+        app:layout_constraintEnd_toEndOf="@id/spellNameRect"
+        app:layout_constraintTop_toTopOf="@id/castingTimeRect"
+        app:layout_constraintBottom_toBottomOf="@+id/castingTimeRect"
+
+        android:layout_marginStart="1dp"/>
+
+    <ImageView
+        android:id="@+id/componentsRect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/components_rect"
+
+        app:layout_constraintStart_toStartOf="@id/castingTimeRect"
+        app:layout_constraintEnd_toStartOf="@id/durationRect"
+        app:layout_constraintTop_toBottomOf="@id/castingTimeRect"
+        app:layout_constraintBottom_toBottomOf="@id/durationRect" />
+
+    <ImageView
+        android:id="@+id/durationRect"
+        android:src="@drawable/duration_rect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintStart_toEndOf="@id/componentsRect"
+        app:layout_constraintEnd_toEndOf="@id/rangeRect"
+        app:layout_constraintTop_toTopOf="@id/componentsRect"
+        app:layout_constraintBottom_toBottomOf="@id/componentsRect"
+
+        android:layout_marginStart="1dp" />
+
+    <ImageView
+        android:id="@+id/spellDescRect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/spell_description"
+
+        app:layout_constraintStart_toStartOf="@id/spellNameRect"
+        app:layout_constraintEnd_toEndOf="@id/spellNameRect"
+        app:layout_constraintTop_toBottomOf="@id/durationRect"
+        app:layout_constraintBottom_toTopOf="@id/higherLvlTxt"
+
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/higherLvlTxt"
+        android:text="At Higher Levels"
+        android:textSize="10sp"
+        android:textColor="#FFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintStart_toStartOf="@id/spellDescRect"
+        app:layout_constraintEnd_toEndOf="@id/spellDescRect"
+        app:layout_constraintTop_toBottomOf="@id/spellDescRect"
+        app:layout_constraintBottom_toTopOf="@id/higherLvlRect"
+
+        android:gravity="center_horizontal"/>
+
+    <ImageView
+        android:id="@+id/higherLvlRect"
+        android:src="@drawable/higher_lvls_rect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintStart_toStartOf="@id/spellDescRect"
+        app:layout_constraintEnd_toEndOf="@id/spellDescRect"
+        app:layout_constraintTop_toBottomOf="@id/higherLvlTxt"
+        app:layout_constraintBottom_toBottomOf="@id/spellCard"
+
+        android:layout_marginBottom="10dp"/>
+
+    <ImageView
+        android:id="@+id/castingTimeTxt"
+        android:src="@drawable/casting_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintStart_toStartOf="@id/castingTimeRect"
+        app:layout_constraintEnd_toEndOf="@id/castingTimeRect"
+        app:layout_constraintTop_toBottomOf="@id/castingTimeRect"
+        app:layout_constraintBottom_toTopOf="@id/castingTime" />
+
+    <TextView
+        android:id="@+id/castingTime"
+        android:textColor="#000"
+        android:text="1 action"
+        android:textSize="10sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintStart_toStartOf="@id/castingTimeTxt"
+        app:layout_constraintEnd_toEndOf="@id/castingTimeTxt"
+        app:layout_constraintTop_toBottomOf="@id/castingTimeTxt"
+        app:layout_constraintBottom_toTopOf="@id/castingTimeRect"/>
+
+    <ImageView
+        android:id="@+id/rangeTxt"
+        android:src="@drawable/range"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintStart_toStartOf="@id/rangeRect"
+        app:layout_constraintEnd_toEndOf="@id/rangeRect"
+        app:layout_constraintTop_toTopOf="@id/rangeRect"
+        app:layout_constraintBottom_toTopOf="@id/range"/>
+
+    <TextView
+        android:id="@+id/range"
+        android:textColor="#000"
+        android:text="150 Feet"
+        android:textSize="10sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintStart_toStartOf="@id/rangeTxt"
+        app:layout_constraintEnd_toEndOf="@id/rangeTxt"
+        app:layout_constraintTop_toBottomOf="@id/rangeTxt"
+        app:layout_constraintBottom_toBottomOf="@id/rangeRect"/>
+
+    <ImageView
+        android:id="@+id/componentsTxt"
+        android:src="@drawable/components"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintStart_toStartOf="@id/componentsRect"
+        app:layout_constraintEnd_toEndOf="@id/componentsRect"
+        app:layout_constraintTop_toTopOf="@id/componentsRect"
+        app:layout_constraintBottom_toTopOf="@id/components"/>
+
+    <TextView
+        android:id="@+id/components"
+        android:textColor="#000"
+        android:text="V, S, M"
+        android:textSize="10sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintStart_toStartOf="@id/componentsTxt"
+        app:layout_constraintEnd_toEndOf="@id/componentsTxt"
+        app:layout_constraintTop_toBottomOf="@id/componentsTxt"
+        app:layout_constraintBottom_toBottomOf="@id/componentsRect"/>
+
+    <ImageView
+        android:id="@+id/durationTxt"
+        android:src="@drawable/duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintStart_toStartOf="@id/durationRect"
+        app:layout_constraintEnd_toEndOf="@id/durationRect"
+        app:layout_constraintTop_toTopOf="@id/durationRect"
+        app:layout_constraintBottom_toTopOf="@id/duration"/>
+
+    <TextView
+        android:id="@+id/duration"
+        android:textColor="#000"
+        android:text="Instantaneous"
+        android:textSize="10sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintStart_toStartOf="@id/durationTxt"
+        app:layout_constraintEnd_toEndOf="@id/durationTxt"
+        app:layout_constraintTop_toBottomOf="@id/durationTxt"
+        app:layout_constraintBottom_toBottomOf="@id/durationRect"/>
+
+    <TextView
+        android:id="@+id/spellName"
+        android:text="Spell Name"
+        android:textColor="#000"
+        android:textSize="12sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintStart_toStartOf="@id/spellNameRect"
+        app:layout_constraintEnd_toEndOf="@id/spellNameRect"
+        app:layout_constraintTop_toTopOf="@id/spellNameRect"
+        app:layout_constraintBottom_toBottomOf="@id/spellNameRect"/>
+
+    <RelativeLayout
+        android:id="@+id/descriptionLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        app:layout_constraintStart_toStartOf="@id/spellDescRect"
+        app:layout_constraintEnd_toEndOf="@id/spellDescRect"
+        app:layout_constraintTop_toTopOf="@id/spellDescRect"
+        app:layout_constraintBottom_toBottomOf="@id/spellDescRect">
+
+        <ImageView
+            android:id="@+id/square"
+            android:background="@drawable/spell_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/material"
+            android:textColor="#000"
+            android:text="Material"
+            android:textSize="10sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignTop="@id/square"
+            android:layout_alignStart="@id/square"
+            android:layout_alignEnd="@id/square"
+
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginTop="5dp"
+            android:gravity="start" />
+
+        <TextView
+            android:id="@+id/spellDesc"
+            android:text="Description"
+            android:textColor="#000"
+            android:textSize="10sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@id/material"
+
+            android:layout_alignStart="@id/square"
+            android:layout_alignEnd="@id/square"
+            android:layout_alignBottom="@id/square"
+
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginTop="5dp"
+            android:gravity="start"
+            android:maxLines="12" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintStart_toStartOf="@id/higherLvlRect"
+        app:layout_constraintEnd_toEndOf="@id/higherLvlRect"
+        app:layout_constraintTop_toTopOf="@id/higherLvlRect"
+        app:layout_constraintBottom_toBottomOf="@id/higherLvlRect">
+
+        <ImageView
+            android:id="@+id/higherLvlBottom"
+            android:background="@drawable/higher_lvls_rect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignTop="@id/higherLvlBottom"
+            android:layout_alignStart="@id/higherLvlBottom"
+            android:layout_alignEnd="@id/higherLvlBottom" />
+
+        <TextView
+            android:id="@+id/higherLvlDesc"
+            android:textColor="#000"
+            android:text="Description"
+            android:textSize="9sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignTop="@id/higherLvlBottom"
+            android:layout_alignStart="@id/higherLvlBottom"
+            android:layout_alignEnd="@id/higherLvlBottom"
+
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="1dp"
+            android:gravity="start"
+            android:maxLines="3" />
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

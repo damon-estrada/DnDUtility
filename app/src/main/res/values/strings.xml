@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">DnDSorcerApp</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="strBase">11</string>
+    <string name="strModifier">+0</string>
+    <string name="dexBase">14</string>
+    <string name="dexModifier">+0</string>
+    <string name="constBase">15</string>
+    <string name="constModifier">+2</string>
+    <string name="intelBase">12</string>
+    <string name="intelModifier">+1</string>
+    <string name="wisBase">11</string>
+    <string name="wisModifier">+0</string>
+    <string name="charBase">17</string>
+    <string name="charModifier">+3</string>
+
+    <!-- Currency -->
+    <string name="gold">1683</string>
+
+    <string name="hitPoints">17</string>
+    <string name="curHitPoints">1d6</string>
+    <string name="armorClass">12</string>
+    <string name="proficiencyBonus">+2</string>
+    <string name="speed">30</string>
+    <string name="initiative">+2</string>
+
+    <!-- Skills -->
+    <string name="deception">+7</string>
+    <string name="intimidation">+5</string>
+    <string name="stealth">+4</string>
+
+    <!--Saving Throws -->
+    <string name="savingCons">+4</string>
+    <string name="savingChar">+4</string>
+
+    <!-- Sorcery Points -->
+    <string name="sorceryPoints">Sorcery Points: + %s</string>
+
+    <!-- -->
+    <string name="personalityTraits">Knighted\nNo poison or drunk for 15 days\nSkin: Blue </string>
+
+
+    <!-- Sorcery Points drop down -->
+    <string-array name="sorceryPointValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+
+</resources>

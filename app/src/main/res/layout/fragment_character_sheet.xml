@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/fragment_character_sheet"
+        android:src="@drawable/character_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:scaleType="fitXY"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutInner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Strength -->
+        <TextView
+            android:id="@+id/strBase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="@string/strBase"
+            android:textColor="#000000"
+            android:layout_marginTop="147dp"
+            android:layout_marginStart="26dp" />
+
+        <TextView
+            android:id="@+id/strMod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/strModifier"
+            android:textSize="12sp"
+            android:textColor="#000000"
+            android:layout_marginTop="2.7dp"
+            android:layout_marginStart="28.5dp" />
+        <!--________________________________________-->
+
+        <!-- Dexterity -->
+        <TextView
+            android:id="@+id/dexBase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dexBase"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:layout_marginTop="26dp"
+            android:layout_marginStart="26dp" />
+
+        <TextView
+            android:id="@+id/dexMod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dexModifier"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:layout_marginTop="4.5dp"
+            android:layout_marginStart="28dp" />
+        <!--________________________________________-->
+
+        <!-- Constitution -->
+        <TextView
+            android:id="@+id/costBase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/constBase"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:layout_marginTop="26dp"
+            android:layout_marginStart="26dp" />
+
+        <TextView
+            android:id="@+id/constMod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/constModifier"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="28dp" />
+        <!--________________________________________-->
+
+        <!-- Intelligence -->
+        <TextView
+            android:id="@+id/intelBase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/intelBase"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:layout_marginTop="26dp"
+            android:layout_marginStart="26dp" />
+
+        <TextView
+            android:id="@+id/intelMod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/intelModifier"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:layout_marginTop="4.5dp"
+            android:layout_marginStart="28dp" />
+        <!--________________________________________-->
+
+        <!-- Wisdom -->
+        <TextView
+            android:id="@+id/wisBase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wisBase"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:layout_marginTop="26dp"
+            android:layout_marginStart="26dp" />
+
+        <TextView
+            android:id="@+id/wisMod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wisModifier"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="28dp" />
+        <!--________________________________________-->
+
+        <!-- Charisma -->
+        <TextView
+            android:id="@+id/charBase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/charBase"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:layout_marginTop="26dp"
+            android:layout_marginStart="26dp" />
+
+        <TextView
+            android:id="@+id/charMod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/charModifier"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:layout_marginTop="3.5dp"
+            android:layout_marginStart="28dp" />
+        <!--________________________________________-->
+
+        <!-- Currency -->
+        <TextView
+            android:id="@+id/gold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gold"
+            android:textColor="#000000"
+            android:textSize="10sp"
+            android:layout_marginTop="108dp"
+            android:layout_marginStart="23.5dp" />
+        <!--________________________________________-->
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/secondCol"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- hitPoints -->
+        <TextView
+            android:id="@+id/hitPoints"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hitPoints"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:layout_marginTop="142dp"
+            android:layout_marginStart="75dp" />
+        <!--________________________________________-->
+
+        <!-- Armor Class -->
+        <TextView
+            android:id="@+id/armorClass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/armorClass"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:layout_marginBottom="25dp"
+            android:layout_marginStart="113dp"
+            android:layout_marginTop="-25dp"/>
+        <!--________________________________________-->
+
+        <!-- Proficiency bonus -->
+        <TextView
+            android:id="@+id/proficiencyBonus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/proficiencyBonus"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:layout_marginBottom="25dp"
+            android:layout_marginStart="148dp"
+            android:layout_marginTop="-45dp"/>
+        <!--________________________________________-->
+
+        <!-- Hit points die -->
+        <TextView
+            android:id="@+id/curHitPoints"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/curHitPoints"
+            android:textColor="#000000"
+            android:textSize="25sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="98dp" />
+        <!--________________________________________-->
+
+        <!-- Speed -->
+        <TextView
+            android:id="@+id/speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/speed"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="59.5dp" />
+        <!--________________________________________-->
+
+        <!-- initiative -->
+        <TextView
+            android:id="@+id/initiative"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/initiative"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:layout_marginTop="0dp"
+            android:layout_marginStart="121dp" />
+        <!--________________________________________-->
+
+        <!-- Skills -->
+        <TextView
+            android:id="@+id/deception"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/deception"
+            android:textColor="#000000"
+            android:textSize="10sp"
+            android:layout_marginTop="66dp"
+            android:layout_marginStart="70dp" />
+
+        <TextView
+            android:id="@+id/intimidation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/intimidation"
+            android:textColor="#000000"
+            android:textSize="10sp"
+            android:layout_marginTop="24.5dp"
+            android:layout_marginStart="70dp" />
+
+        <TextView
+            android:id="@+id/stealth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stealth"
+            android:textColor="#000000"
+            android:textSize="10sp"
+            android:layout_marginTop="98dp"
+            android:layout_marginStart="70dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/thirdColumn"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/savingCons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/savingCons"
+            android:textColor="#000000"
+            android:textSize="10sp"
+            android:layout_marginTop="145dp"
+            android:layout_marginStart="199dp" />
+
+        <TextView
+            android:id="@+id/savingChar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/savingChar"
+            android:textColor="#000000"
+            android:textSize="10sp"
+            android:layout_marginTop="24.5dp"
+            android:layout_marginStart="199dp" />
+
+        <!-- android:text="@{@string/location(user.city,user.state)}" -->
+        <TextView
+            android:id="@+id/sorceryPoints"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Sorcery Points:       4"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:layout_marginTop="147dp"
+            android:layout_marginStart="142dp" />
+
+        <!--
+        <Spinner
+            android:id="@+id/sorceryPointsSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="230dp"
+            android:layout_marginTop="-20dp"
+            android:entries="@array/sorceryPointValues">
+
+        </Spinner>
+        -->
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lastColumn"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/personalityTraits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="@string/personalityTraits"
+            android:textColor="#000000"
+            android:textSize="8sp"
+            android:layout_marginTop="130dp"
+            android:layout_marginStart="273dp" />
+    </LinearLayout>
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
