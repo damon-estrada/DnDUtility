@@ -7,8 +7,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.example.dndsorcerapp.Fragments.CharacterSheetFragment;
@@ -29,39 +31,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = findViewById(R.id.toolBar);
+        toolbar.setTitle("Character Sheet");
         setSupportActionBar(toolbar);
-
 
         /* find the if views below */
         drawerLayout = findViewById(R.id.drawer_layout);
         spellsToCreate.add("1"); // acid arrow
-        spellsToCreate.add("7");
+        spellsToCreate.add("7"); // Animal Messenger
         spellsToCreate.add("9"); // Animate Dead
-        spellsToCreate.add("10");
+        spellsToCreate.add("10"); // Animate Objects
         spellsToCreate.add("15"); // Arcane Hand
         spellsToCreate.add("119"); // Fireball
         spellsToCreate.add("190"); // Magic Missile
-        /*Spinner sorcerySpinner = (Spinner) findViewById(R.id.sorceryPointsSpinner);
-
-        sorcerySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        */
 
         NavigationView nV = findViewById(R.id.nav_view);
         nV.setNavigationItemSelectedListener(this);
-
 
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
