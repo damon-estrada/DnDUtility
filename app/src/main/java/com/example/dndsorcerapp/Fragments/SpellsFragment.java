@@ -3,12 +3,19 @@ package com.example.dndsorcerapp.Fragments;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
@@ -30,7 +37,9 @@ public class SpellsFragment extends Fragment {
 
     private List<String> spellsToCreate;
     private ViewPager mViewPager;
+    private ViewPager bViewPager;
     private FragmentAdapter fStateAdapter;
+    private SpellBackAdapter bStateAdapter;
 
     Retrofit retrofit = RetrofitClientCreation.getRetrofitCreation();
 
@@ -51,69 +60,46 @@ public class SpellsFragment extends Fragment {
             this.spellsToCreate.add(spellsToCreate.get(i));
     }
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View inflaterView = inflater.inflate(R.layout.fragment_spell, container, false);
+        setHasOptionsMenu(true);
 
+        /* Set toolbar title */
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Spells");
 
         fStateAdapter = new FragmentAdapter(getFragmentManager());
-        mViewPager = (ViewPager) inflaterView.findViewById(R.id.container);
+        bStateAdapter = new SpellBackAdapter(getFragmentManager());
+        mViewPager = (ViewPager) inflaterView.findViewById(R.id.frontOfSpell);
+        bViewPager = (ViewPager) inflaterView.findViewById(R.id.backOfSpell);
 
         for (int i = 0; i < spellsToCreate.size(); i++) {
-            addToViewPager(mViewPager, i, fStateAdapter);
+            addToViewPager(i, fStateAdapter);
         }
+
+        mViewPager.setAdapter(fStateAdapter);
+        //bViewPager.setAdapter(bStateAdapter);
 
         /* Getting creative with the view pager transformer */
         //mViewPager.setPageTransformer(false, new DepthPageTransformer());
-        mViewPager.setPageTransformer(false, new ViewPager.PageTransformer() {
-            @Override
-            public void transformPage(@NonNull View page, float position) {
-                page.setTranslationX(-position*page.getWidth());
-
-
-
-                if (position<-1){    // [-Infinity,-1)
-                    // This page is way off-screen to the left.
-                    page.setAlpha(0);
-
-                }
-                else if (position<=0){    // [-1,0]
-                    page.setAlpha(1);
-                    page.setPivotX(0);
-                    page.setRotationY(90*Math.abs(position));
-
-                }
-                else if (position <=1){    // (0,1]
-                    page.setAlpha(1);
-                    page.setPivotX(page.getWidth());
-                    page.setRotationY(-90*Math.abs(position));
-
-                }else {    // (1,+Infinity]
-                    // This page is way off-screen to the right.
-                    page.setAlpha(0);
-
-                }
-            }
-        });
-
+        mViewPager.setPageTransformer(false, new DepthPageTransformer());
         return inflaterView;
     }
 
-    private void addToViewPager(ViewPager viewPager, int fragmentNum, FragmentAdapter fStateAdapter) {
+    private void addToViewPager(int fragmentNum, FragmentAdapter fStateAdapter) {
 
         /* Choose the correct spell card needed for the current spell call */
         chooseSpellCardLayout(spellsToCreate.get(fragmentNum));
 
         Log.d(TAG, "addToViewPager: LAYOUT NEEDED: " + layoutNeeded);
 
-        SpellFragmentHelper tmp = new SpellFragmentHelper(R.layout.dnd_spell_card, spellsToCreate.get(fragmentNum));
+        SpellFrontFragment tmp = new SpellFrontFragment(R.layout.dnd_spell_card, spellsToCreate.get(fragmentNum));
+        //SpellBackFragment back = new SpellBackFragment(R.layout.dnd_spell_card_back);
 
-        fStateAdapter.addFragment(tmp, "Fragment " + fragmentNum);
-
-        viewPager.setAdapter(fStateAdapter);
+        fStateAdapter.addFragment(tmp, "Fragment Front " + fragmentNum);
+        //bStateAdapter.addFragment(back, "Fragment Back " + fragmentNum);
     }
 
     public void chooseSpellCardLayout(String spellIndex) {
@@ -144,6 +130,40 @@ public class SpellsFragment extends Fragment {
         });
     }
 
+    /**
+     * This Will create the options icon and menu panel in the top right corner.
+     * @param menu The menu drop down
+     * @param inflater the view inflater
+     */
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.spells_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    /**
+     * Add or Remove a spell option bar and what happens on selected
+     * @param item The option being selected
+     * @return true or false on what was chosen.
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.addSpell:
+                Toast.makeText(getContext(), "Add Spell", Toast.LENGTH_SHORT).show();
+                SpellFrontFragment tmp = new SpellFrontFragment(R.layout.dnd_spell_card, spellsToCreate.get(0));
+
+                fStateAdapter.addFragment(tmp, "new spell");
+                return true;
+            case R.id.removeSpell:
+                Toast.makeText(getContext(), "Remove Spell", Toast.LENGTH_SHORT).show();
+                fStateAdapter.deleteFragment(mViewPager.getCurrentItem());
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     /**
      * Provided by google
