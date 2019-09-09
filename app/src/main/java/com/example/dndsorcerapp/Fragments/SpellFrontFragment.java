@@ -1,14 +1,19 @@
 package com.example.dndsorcerapp.Fragments;
 
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.example.dndsorcerapp.MyDnDAPI;
@@ -22,7 +27,7 @@ import retrofit2.Retrofit;
 
 import static android.content.ContentValues.TAG;
 
-public class SpellFragmentHelper extends Fragment {
+public class SpellFrontFragment extends Fragment {
 
     Retrofit retrofit = RetrofitClientCreation.getRetrofitCreation();
 
@@ -46,7 +51,7 @@ public class SpellFragmentHelper extends Fragment {
 
     private String spellToCreate;
 
-    public SpellFragmentHelper(int layoutId, String spellToCreate) {
+    public SpellFrontFragment(int layoutId, String spellToCreate) {
         this.layoutId = layoutId;
         this.spellToCreate = spellToCreate;
     }
@@ -118,7 +123,7 @@ public class SpellFragmentHelper extends Fragment {
         for (int i = 0; i < spell.getComponents().size(); i++) {
             formatter.append(spell.getComponents().get(i));
             if (i != (spell.getComponents().size()) - 1) {
-                formatter.append(",");  // do not append to the last component
+                formatter.append(", ");  // do not append to the last component
             }
         }
 
@@ -172,5 +177,4 @@ public class SpellFragmentHelper extends Fragment {
     public void assignCorrectLayout(LayoutInflater inflater, ViewGroup container, int layoutId) {
         inflaterView = inflater.inflate(layoutId, container, false);
     }
-
 }
