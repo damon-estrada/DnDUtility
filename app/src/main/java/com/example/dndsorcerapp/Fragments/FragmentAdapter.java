@@ -1,12 +1,10 @@
 package com.example.dndsorcerapp.Fragments;
 
-import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.PagerAdapter;
 
 import java.util.ArrayList;
@@ -14,11 +12,13 @@ import java.util.List;
 
 public class FragmentAdapter extends FragmentStatePagerAdapter {
 
-    private  List<Fragment> mFragmentList = new ArrayList<>();
-    private  List<String> mFragmentTitleList = new ArrayList<>();
+    /* This list knows how many spells the user has that is relayed
+    *  from the database. */
+    private List<SpellCardCreation> mFragmentList = new ArrayList<>();
 
-    public void setmFragmentList(List<Fragment> mFragmentList) {
+    public void setFragmentList(List<SpellCardCreation> mFragmentList) {
         this.mFragmentList = mFragmentList;
+        notifyDataSetChanged();
     }
 
     public FragmentAdapter(FragmentManager fm) {
@@ -38,19 +38,6 @@ public class FragmentAdapter extends FragmentStatePagerAdapter {
     @Override
     public float getPageWidth(int position) {
         return super.getPageWidth(position);
-    }
-
-    public void addFragment(Fragment fragment, String title) {
-        mFragmentList.add(fragment);
-        mFragmentTitleList.add(title);
-        notifyDataSetChanged();
-    }
-
-    public void deleteFragment(int position) {
-        if (mFragmentList.size() > 0) {
-            mFragmentList.remove(position);
-            notifyDataSetChanged();
-        }
     }
 
     /**
