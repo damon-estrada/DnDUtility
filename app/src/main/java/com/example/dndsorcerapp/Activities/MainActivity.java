@@ -1,4 +1,4 @@
-package com.example.dndsorcerapp;
+package com.example.dndsorcerapp.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -6,10 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.WindowManager;
@@ -18,16 +15,12 @@ import android.widget.Toast;
 import com.example.dndsorcerapp.Fragments.CharacterSheetFragment;
 import com.example.dndsorcerapp.Fragments.SearchFragment;
 import com.example.dndsorcerapp.Fragments.SpellsFragment;
+import com.example.dndsorcerapp.R;
 import com.google.android.material.navigation.NavigationView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawerLayout;
-    private static final String TAG = MainActivity.class.getSimpleName();
-    private static final List<String> spellsToCreate = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +57,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     /**
      * Item was selected so we return true.
-     * @param menuItem
-     * @return
+     * @param menuItem which fragment was selected
+     * @return fragment view
      */
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -100,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
+        }else {
             super.onBackPressed();
         }
     }
