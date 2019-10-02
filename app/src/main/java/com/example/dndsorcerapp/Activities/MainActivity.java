@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -43,13 +45,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         /* find the if views below */
         drawerLayout = findViewById(R.id.drawer_layout);
-        spellsToCreate.add("1"); // acid arrow
-        spellsToCreate.add("7"); // Animal Messenger
-        spellsToCreate.add("9"); // Animate Dead
-        spellsToCreate.add("10"); // Animate Objects
-        spellsToCreate.add("15"); // Arcane Hand
-        spellsToCreate.add("119"); // Fireball
-        spellsToCreate.add("190"); // Magic Missile
 
         NavigationView nV = findViewById(R.id.nav_view);
         nV.setNavigationItemSelectedListener(this);
@@ -65,7 +60,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new CharacterSheetFragment()).commit();
         }
-
     }
 
     /**
@@ -83,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_spells:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new SpellsFragment(spellsToCreate)).commit();
+                        new SpellsFragment()).commit();
                 onBackPressed();
                 break;
             case R.id.nav_search:

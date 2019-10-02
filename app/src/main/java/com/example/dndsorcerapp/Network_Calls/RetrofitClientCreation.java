@@ -1,4 +1,4 @@
-package com.example.dndsorcerapp;
+package com.example.dndsorcerapp.Retrofit_Init;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitClientCreation {
 
     private static Retrofit retrofitService = null;
-    private static final String BASE_URL = "http://dnd5eapi.co/api/";
+    private static final String BASE_URL = "https://api.open5e.com/";
 
     public static Retrofit getRetrofitCreation() {
 

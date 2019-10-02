@@ -15,10 +15,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
+import com.example.dndsorcerapp.MainActivity;
 import com.example.dndsorcerapp.MyDnDAPI;
 import com.example.dndsorcerapp.R;
 import com.example.dndsorcerapp.RetrofitClientCreation;
+import com.example.dndsorcerapp.SpellEntity;
+import com.example.dndsorcerapp.SpellViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -50,6 +58,8 @@ public class SpellFrontFragment extends Fragment {
     public int layoutId;
 
     private String spellToCreate;
+    private List<SpellEntity> spells = new ArrayList<>();
+
 
     public SpellFrontFragment(int layoutId, String spellToCreate) {
         this.layoutId = layoutId;
@@ -60,10 +70,12 @@ public class SpellFrontFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        //inflaterView = inflater.inflate(R.layout.dnd_spell_card, container, false);
-        assignCorrectLayout(inflater, container, layoutId);
+        inflaterView = inflater.inflate(R.layout.dnd_spell_card, container, false);
+        //assignCorrectLayout(inflater, container, layoutId);
 
         System.out.println("VIEW: " + inflaterView);
+
+
 
         makeCall(inflaterView, spellToCreate);
 
@@ -90,6 +102,11 @@ public class SpellFrontFragment extends Fragment {
         });
     }
 
+    /**
+     * BuildSpellCard() will assign all the spell card's attributes (TextViews).
+     * @param spell Spell object which holds the spell attributes.
+     * @param view Refering to the view it'll be placed (inflaterView).
+     */
     public void buildSpellCard(Spell spell, View view) {
 
         StringBuilder formatter = new StringBuilder();
@@ -161,6 +178,12 @@ public class SpellFrontFragment extends Fragment {
         higherLvlDesc.setText(formatter);
     }
 
+    /**
+     * This method will append the proper tense of the word based on the spell level
+     * @param lvl Spell level as a number
+     * @param school What school does the spell belong to.
+     * @return String with the appended tense.
+     */
     public String formatLvl(String lvl, String school) {
         switch (lvl.charAt(0)) {
             case '1':
@@ -174,6 +197,14 @@ public class SpellFrontFragment extends Fragment {
         }
     }
 
+    /**
+     * This method is intended to chose a layout of spell card based on if it has certain traits.
+     * For example, a spell with no required materials should use a layout that does not have
+     * that parameter, etc.
+     * @param inflater
+     * @param container
+     * @param layoutId
+     */
     public void assignCorrectLayout(LayoutInflater inflater, ViewGroup container, int layoutId) {
         inflaterView = inflater.inflate(layoutId, container, false);
     }
